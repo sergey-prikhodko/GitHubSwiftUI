@@ -6,6 +6,13 @@ target 'GitHubSwiftUI' do
   use_frameworks!
 
   # Pods for GitHubSwiftUI
-  pod 'Alamofire', '~> 5.0.0-rc.3'
+  
+end
+
+
+target 'Core' do
+	use_frameworks!
+
+	pod 'Alamofire', '~> 5.0.0-rc.3'
 
 end
