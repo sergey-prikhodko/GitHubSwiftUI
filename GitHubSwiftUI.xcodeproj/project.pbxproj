@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -24,6 +24,7 @@
 		435B0173B28692D41AA25103 /* Pods-GitHubSwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSwiftUI.release.xcconfig"; path = "Target Support Files/Pods-GitHubSwiftUI/Pods-GitHubSwiftUI.release.xcconfig"; sourceTree = "<group>"; };
 		7F9EF8044557E8E9E1C9544B /* Pods-GitHubSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-GitHubSwiftUI/Pods-GitHubSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF34A687AFC89280B299A41 /* Pods_GitHubSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B54C9F8723D1B2910033F222 /* GitHubSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubSwiftUI.entitlements; sourceTree = "<group>"; };
 		B5AC58CB23CDED400045782F /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		B5AC58CE23CDF9DC0045782F /* UsersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
 		B5AC58D023CF417F0045782F /* UserCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellView.swift; sourceTree = "<group>"; };
@@ -134,6 +135,7 @@
 		B5B7487123CC763E00B51EB2 /* GitHubSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B54C9F8723D1B2910033F222 /* GitHubSwiftUI.entitlements */,
 				B5AC58D223CF41910045782F /* Entities */,
 				B5AC58C923CDED000045782F /* Flows */,
 				B598135223CDD88200CE0053 /* Support */,
@@ -156,7 +158,6 @@
 				7F9EF8044557E8E9E1C9544B /* Pods-GitHubSwiftUI.debug.xcconfig */,
 				435B0173B28692D41AA25103 /* Pods-GitHubSwiftUI.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -426,7 +427,9 @@
 			baseConfigurationReference = 7F9EF8044557E8E9E1C9544B /* Pods-GitHubSwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GitHubSwiftUI/GitHubSwiftUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitHubSwiftUI/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = MFVF92WP4G;
 				ENABLE_PREVIEWS = YES;
@@ -437,6 +440,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wx.GitHubSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,7 +451,9 @@
 			baseConfigurationReference = 435B0173B28692D41AA25103 /* Pods-GitHubSwiftUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = GitHubSwiftUI/GitHubSwiftUI.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"GitHubSwiftUI/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = MFVF92WP4G;
 				ENABLE_PREVIEWS = YES;
@@ -458,6 +464,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wx.GitHubSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
