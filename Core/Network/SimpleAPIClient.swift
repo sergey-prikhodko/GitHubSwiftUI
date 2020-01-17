@@ -16,17 +16,16 @@ final class SimpleAPIClient {
         do {
             var requestModel = try URLRequest(url: route.url, method: route.method, headers: route.headers)
             
-            print("url:\t\t\(requestModel.url?.absoluteString ?? ":(")")
-            print("method:\t\t\(requestModel.httpMethod ?? ":(")")
-            print("headers:\t\(requestModel.allHTTPHeaderFields ?? [:])")
+            log("url:\t\t\(requestModel.url?.absoluteString ?? ":(")")
+            log("method:\t\t\(requestModel.httpMethod ?? ":(")")
+            log("headers:\t\(requestModel.allHTTPHeaderFields ?? [:])")
             
             if let parameters = request {
                 
                 let jsonData = try route.encoder.encode(parameters)
                 requestModel.httpBody = jsonData
                 let encodedObjectJsonString = String(data: jsonData, encoding: .utf8)
-                print("parameters:\t\(encodedObjectJsonString ?? ":(")")
-                
+                log("parameters:\t\(encodedObjectJsonString ?? ":(")")
             }
             
             AF.request(requestModel).responseData { response in

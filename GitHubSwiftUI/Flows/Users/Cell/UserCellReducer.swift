@@ -32,7 +32,7 @@ final class UserCellReducer: ObservableObject {
         
         
         AF.request(url, method: .get).responseData { [weak self] response in
-            guard let self = self, let data = response.value else { return }
+            guard let self = self, let data = response.data else { return }
             self.provide(image: data)
         }
     }

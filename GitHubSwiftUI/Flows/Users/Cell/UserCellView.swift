@@ -16,12 +16,7 @@ struct UserCellView: View {
         ZStack {
             Color.red
             Text(reducer.initials)
-            .background(
-                reducer.image
-                    .resizable()
-                    .scaledToFit()
-            )
-            .animation(.easeInOut)
+            reducer.image.resizable().scaledToFit().animation(.easeInOut)
         }
     }
 }
