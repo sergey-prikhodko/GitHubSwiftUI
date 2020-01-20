@@ -8,4 +8,4 @@
 
 import Foundation
 
-struct EmptyBody: Decodable {}
+struct EmptyBody: Encodable {}

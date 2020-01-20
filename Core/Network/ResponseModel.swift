@@ -10,22 +10,21 @@ import Foundation
 
 public final class ResponseModel<T> {
     
-    var response: T?
-    var error: Error?
+    public var value: T?
+    public var error: Error?
     
-    init(response: T? = nil, error: Error? = nil) {
-        self.response = response
+    init(value: T? = nil, error: Error? = nil) {
+        self.value = value
         self.error = error
     }
     
-    convenience init(_ response: T) {
+    convenience init(_ value: T) {
         self.init()
-        self.response = response
+        self.value = value
     }
     
     convenience init(_ error: Error) {
         self.init()
         self.error = error
     }
-    
 }

@@ -8,10 +8,12 @@
 
 import SwiftUI
 import Combine
+import Core
 
 struct UsersView: View {
     
     @State private var searchTerm: String = ""
+    @ObservedObject var reducer = UsersReducer()
     
     private let onEditChanges: (Bool) -> Void = {
         debugPrint("on edit: \($0)")
@@ -19,15 +21,6 @@ struct UsersView: View {
     private let onCommit: () -> Void = {
         debugPrint("on commit")
     }
-    
-    private let cellReducer = UserCellReducer(
-        GitHubUser(
-            id: "id",
-            firstName: "Sergey",
-            lastName: "Prikhodko",
-            imageURL: URL(string: "https://i7.pngguru.com/preview/662/295/721/programmer-computer-programming-laptop-professional-architectural-engineer-vector-material.jpg")!
-        )
-    )
     
     var body: some View {
         NavigationView {
@@ -37,17 +30,24 @@ struct UsersView: View {
                     .foregroundColor(.red)
                     .cornerRadius(4)
                     .clipped()
+                    .padding(EdgeInsets(top: 5.0, leading: 15.0, bottom: 0.0, trailing: 15.0))
                 List {
-                    ForEach(0..<8) { _ in
-                        HStack {
-                            ForEach(0..<3) { _ in
-                                UserCellView(reducer: self.cellReducer)
-                                    .aspectRatio(1.0, contentMode: .fill)
-                                    .cornerRadius(8.0)
-                            }
-                        }
+                    ForEach(reducer.cellReducers) {
+                        UserCellView(reducer: $0)
+                            .frame(width: 100, height: 100)
+                            .cornerRadius(8.0)
                     }
-                }
+//                    UserCellReducer($0)
+//                    ForEach(0..<reducer.$numberOfRows) { _ in
+//                        HStack {
+//                            ForEach(0..<3) { _ in
+//                                UserCellView(reducer: )
+//                                    .aspectRatio(1.0, contentMode: .fill)
+//                                    .cornerRadius(8.0)
+//                            }
+//                        }
+//                    }
+                }.hidden()
             }
             .navigationBarTitle("Users", displayMode: .large)
         }

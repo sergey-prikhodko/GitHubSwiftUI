@@ -14,7 +14,7 @@ public struct GitHubUser: Decodable {
     public let id: Int
     public let avatarUrl: String
     public let url: String
-    public let score: String
+    public let score: Double
 
     enum CodingKeys: String, CodingKey {
         

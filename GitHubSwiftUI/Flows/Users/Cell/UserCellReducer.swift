@@ -9,8 +9,11 @@
 import Combine
 import SwiftUI
 import Alamofire
+import Core
 
-final class UserCellReducer: ObservableObject {
+final class UserCellReducer: ObservableObject, Identifiable {
+    
+    let id = UUID()
     
     @Published var initials = ""
     @Published var image = Image(uiImage: UIImage())
@@ -26,9 +29,9 @@ final class UserCellReducer: ObservableObject {
     // MARK: - Private funcs
     
     private func setup() {
-        initials = "\(user.firstName.first?.uppercased() ?? "") \(user.lastName.first?.uppercased() ?? "")"
+        initials = "\(user.login)"
         
-        guard let url = user.imageURL else { return }
+        guard let url = URL(string: user.avatarUrl) else { return }
         
         
         AF.request(url, method: .get).responseData { [weak self] response in

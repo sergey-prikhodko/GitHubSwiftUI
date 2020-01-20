@@ -11,19 +11,19 @@ import Alamofire
 
 enum GitHubRoutes: ApiRoute {
     
-    case users
+    case users(String)
     
     var url: URLConvertible {
         switch self {
-        case .users:
-            return ""
+        case .users(let term):
+            return "https://api.github.com/search/users?q=\(term)"
         }
     }
     
     var headers: HTTPHeaders {
         switch self {
         case .users:
-            return [:]
+            return ["Accept": "application/vnd.github.machine-man-preview+json"]
         }
     }
     

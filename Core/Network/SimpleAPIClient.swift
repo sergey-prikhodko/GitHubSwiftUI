@@ -8,25 +8,27 @@
 
 import Alamofire
 
-final class SimpleAPIClient {
+final class SimpleAPIClient<Request: Encodable, Response: Decodable> {
     
-    static func execute<Request: Encodable, Response: Decodable>(_ route: ApiRoute,
-                                                                 request: Request?,
-                                                                 completion: @escaping (ResponseModel<Response>) -> Void) {
+    static func execute(_ route: ApiRoute,
+                        request: Request? = nil,
+                        completion: @escaping (ResponseModel<Response>) -> Void) {
         do {
             var requestModel = try URLRequest(url: route.url, method: route.method, headers: route.headers)
             
-            log("url:\t\t\(requestModel.url?.absoluteString ?? ":(")")
-            log("method:\t\t\(requestModel.httpMethod ?? ":(")")
-            log("headers:\t\(requestModel.allHTTPHeaderFields ?? [:])")
             
-            if let parameters = request {
+            
+            if let parameters = request, !(parameters is EmptyBody) {
                 
                 let jsonData = try route.encoder.encode(parameters)
                 requestModel.httpBody = jsonData
                 let encodedObjectJsonString = String(data: jsonData, encoding: .utf8)
-                log("parameters:\t\(encodedObjectJsonString ?? ":(")")
+                log("parameters: \(encodedObjectJsonString ?? ":(")")
             }
+            
+            log("url: \(requestModel.url?.absoluteString ?? ":(")")
+            log("method: \(requestModel.httpMethod ?? ":(")")
+            log("headers: \(requestModel.allHTTPHeaderFields ?? [:])")
             
             AF.request(requestModel).responseData { response in
                 if let error = response.error {

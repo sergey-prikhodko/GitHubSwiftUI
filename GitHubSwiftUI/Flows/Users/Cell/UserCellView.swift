@@ -23,14 +23,6 @@ struct UserCellView: View {
 
 struct UserCellView_Previews: PreviewProvider {
     static var previews: some View {
-        UserCellView(
-            reducer: UserCellReducer(
-                GitHubUser(
-                    id: "id",
-                    firstName: "Sergey",
-                    lastName: "Prikhodko",
-                    imageURL: URL(string: "https://i7.pngguru.com/preview/662/295/721/programmer-computer-programming-laptop-professional-architectural-engineer-vector-material.jpg")!)
-            )
-        )
+        EmptyView()
     }
 }
