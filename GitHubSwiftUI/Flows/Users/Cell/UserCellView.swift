@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Core
 
 struct UserCellView: View {
     
@@ -14,15 +15,35 @@ struct UserCellView: View {
     
     var body: some View {
         ZStack {
-            Color.red
-            Text(reducer.initials)
-            reducer.image.resizable().scaledToFit().animation(.easeInOut)
+            Color(UIColor.secondarySystemBackground)
+            NavigationLink(destination: reducer.detailedLink) {
+                HStack {
+                    reducer.image
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color(UIColor.tertiarySystemBackground),
+                                        lineWidth: 4.0)
+                        )
+                        .shadow(radius: 10.0)
+                    Spacer()
+                    Text(reducer.initials)
+                        .font(.title)
+                        .foregroundColor(Color(UIColor.label))
+                        .multilineTextAlignment(.trailing)
+                        .lineLimit(nil)
+                }
+            }
+            .padding()
         }
     }
 }
 
 struct UserCellView_Previews: PreviewProvider {
     static var previews: some View {
-        EmptyView()
+        UserCellView(reducer: UserCellReducer(GitHubUser.sergey))
+            .previewLayout(.fixed(width: 375, height: 70))
     }
 }

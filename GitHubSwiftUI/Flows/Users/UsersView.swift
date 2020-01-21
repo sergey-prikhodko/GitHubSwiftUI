@@ -12,7 +12,6 @@ import Core
 
 struct UsersView: View {
     
-    @State private var searchTerm: String = ""
     @ObservedObject var reducer = UsersReducer()
     
     private let onEditChanges: (Bool) -> Void = {
@@ -25,30 +24,26 @@ struct UsersView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Search", text: $searchTerm, onEditingChanged: onEditChanges, onCommit: onCommit)
-                    .frame(height: 50.0, alignment: Alignment.topLeading)
-                    .foregroundColor(.red)
-                    .cornerRadius(4)
-                    .clipped()
-                    .padding(EdgeInsets(top: 5.0, leading: 15.0, bottom: 0.0, trailing: 15.0))
-                List {
-                    ForEach(reducer.cellReducers) {
-                        UserCellView(reducer: $0)
-                            .frame(width: 100, height: 100)
-                            .cornerRadius(8.0)
+                ZStack {
+                    Color(UIColor.secondarySystemBackground)
+                        .cornerRadius(10.0)
+                    TextField("Search",
+                              text: $reducer.searchTerm,
+                              onEditingChanged: onEditChanges,
+                              onCommit: onCommit)
+                        .foregroundColor(Color(UIColor.label))
+                        .offset(x: 15.0)
+                        .padding(.trailing, 15.0)
                     }
-//                    UserCellReducer($0)
-//                    ForEach(0..<reducer.$numberOfRows) { _ in
-//                        HStack {
-//                            ForEach(0..<3) { _ in
-//                                UserCellView(reducer: )
-//                                    .aspectRatio(1.0, contentMode: .fill)
-//                                    .cornerRadius(8.0)
-//                            }
-//                        }
-//                    }
-                }.hidden()
+                .frame(height: 50.0)
+                .padding()
+                List(reducer.cellReducers, id: \.id) {
+                    UserCellView(reducer: $0)
+                        .frame(height: 100)
+                        .cornerRadius(8.0)
+                }
             }
+//            .padding()
             .navigationBarTitle("Users", displayMode: .large)
         }
     }

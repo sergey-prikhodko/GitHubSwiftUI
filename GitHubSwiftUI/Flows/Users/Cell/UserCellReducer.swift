@@ -13,7 +13,10 @@ import Core
 
 final class UserCellReducer: ObservableObject, Identifiable {
     
-    let id = UUID()
+    var id: Int { return user.id }
+    var detailedLink: some View {
+        return UserDetailsView(user: user)
+    }
     
     @Published var initials = ""
     @Published var image = Image(uiImage: UIImage())
@@ -42,6 +45,5 @@ final class UserCellReducer: ObservableObject, Identifiable {
     
     private func provide(image data: Data) {
         image = Image(uiImage: UIImage(data: data) ?? UIImage())
-        initials = ""
     }
 }

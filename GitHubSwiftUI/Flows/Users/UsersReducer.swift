@@ -13,14 +13,21 @@ final class UsersReducer: ObservableObject {
     
 //    var reducers = AnyPublisher<[UserCellReducer], nil>()
     
+    @Published var searchTerm = ""
     @Published var cellReducers: [UserCellReducer] = []
     
     var numberOfRows: AnyPublisher<Int, Never> {
         return cellReducers.publisher.receive(on: DispatchQueue.main).count().eraseToAnyPublisher()
     }
     
+//    var searchPublisher: AnyPublisher<String, Never> {
+//        return searchTerm.publisher.eraseToAnyPublisher().
+//    }
+    
     init() {
         go()
+        
+//        searchTerm.publisher.
     }
     
     func go() {

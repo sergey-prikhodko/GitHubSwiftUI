@@ -26,3 +26,15 @@ public struct GitHubUser: Decodable {
         case score
     }
 }
+
+// MARK: - Empty
+public extension GitHubUser {
+    
+    static var sergey: GitHubUser {
+        return GitHubUser(login: "sergey-prikhodko",
+                          id: 937,
+                          avatarUrl: "https://avatars0.githubusercontent.com/u/25432228?v=4",
+                          url: "",
+                          score: 322.8)
+    }
+}
