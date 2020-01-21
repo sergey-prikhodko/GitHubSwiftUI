@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B51C11FC23D701B000E53D79 /* TableViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B51C11FB23D701B000E53D79 /* TableViewSettings.swift */; };
 		B54C9F9123D1B3D00033F222 /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = B54C9F8F23D1B3D00033F222 /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B54C9F9423D1B3D00033F222 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B54C9F8D23D1B3D00033F222 /* Core.framework */; };
 		B54C9F9523D1B3D00033F222 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B54C9F8D23D1B3D00033F222 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -67,6 +68,7 @@
 		7F9EF8044557E8E9E1C9544B /* Pods-GitHubSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-GitHubSwiftUI/Pods-GitHubSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
 		A86DA6D729DE81800DA35C5E /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAF34A687AFC89280B299A41 /* Pods_GitHubSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B51C11FB23D701B000E53D79 /* TableViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSettings.swift; sourceTree = "<group>"; };
 		B54C9F8723D1B2910033F222 /* GitHubSwiftUI.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GitHubSwiftUI.entitlements; sourceTree = "<group>"; };
 		B54C9F8D23D1B3D00033F222 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B54C9F8F23D1B3D00033F222 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
@@ -118,6 +120,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B51C11FA23D7013E00E53D79 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B51C11FB23D701B000E53D79 /* TableViewSettings.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		B54C9F8E23D1B3D00033F222 /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +276,7 @@
 		B5B7487123CC763E00B51EB2 /* GitHubSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B51C11FA23D7013E00E53D79 /* Common */,
 				B54C9F8723D1B2910033F222 /* GitHubSwiftUI.entitlements */,
 				B5AC58C923CDED000045782F /* Flows */,
 				B598135223CDD88200CE0053 /* Support */,
@@ -515,6 +526,7 @@
 				B5B7487523CC763F00B51EB2 /* SceneDelegate.swift in Sources */,
 				B5AC58CC23CDED400045782F /* TabsView.swift in Sources */,
 				B5AC58D123CF417F0045782F /* UserCellView.swift in Sources */,
+				B51C11FC23D701B000E53D79 /* TableViewSettings.swift in Sources */,
 				B5AC58D723D07C9D0045782F /* UserCellReducer.swift in Sources */,
 				B5AC58CF23CDF9DC0045782F /* UsersView.swift in Sources */,
 			);

@@ -26,25 +26,26 @@ struct UsersView: View {
             VStack {
                 ZStack {
                     Color(UIColor.secondarySystemBackground)
-                        .cornerRadius(10.0)
+                        .cornerRadius(8.0)
                     TextField("Search",
                               text: $reducer.searchTerm,
                               onEditingChanged: onEditChanges,
                               onCommit: onCommit)
                         .foregroundColor(Color(UIColor.label))
                         .offset(x: 15.0)
-                        .padding(.trailing, 15.0)
+                        .padding(.trailing, 30.0)
                     }
                 .frame(height: 50.0)
                 .padding()
-                List(reducer.cellReducers, id: \.id) {
+                List(reducer.cellReducers) {
                     UserCellView(reducer: $0)
                         .frame(height: 100)
                         .cornerRadius(8.0)
                 }
             }
-//            .padding()
-            .navigationBarTitle("Users", displayMode: .large)
+            .navigationBarTitle(Text("Users"))
+//            .onAppear { setupTableViewAppearance() }
+//            .onDisappear { discardTableViewAppearance() }
         }
     }
 }

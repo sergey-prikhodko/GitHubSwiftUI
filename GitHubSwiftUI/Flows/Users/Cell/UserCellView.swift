@@ -27,7 +27,8 @@ struct UserCellView: View {
                                 .stroke(Color(UIColor.tertiarySystemBackground),
                                         lineWidth: 4.0)
                         )
-                        .shadow(radius: 10.0)
+                        .shadow(color: Color.black.opacity(0.15),
+                                radius: 5.0)
                     Spacer()
                     Text(reducer.initials)
                         .font(.title)
