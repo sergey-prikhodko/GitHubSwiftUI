@@ -14,16 +14,15 @@ struct UsersView: View {
     
     @ObservedObject var reducer = UsersReducer()
     
-    private let onEditChanges: (Bool) -> Void = {
-        debugPrint("on edit: \($0)")
+    private let onEditChanges: (Bool) -> Void = { _ in
     }
     private let onCommit: () -> Void = {
-        debugPrint("on commit")
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
     }
     
     var body: some View {
         NavigationView {
-            VStack {
+            List {
                 ZStack {
                     Color(UIColor.secondarySystemBackground)
                         .cornerRadius(8.0)
@@ -34,19 +33,16 @@ struct UsersView: View {
                         .foregroundColor(Color(UIColor.label))
                         .offset(x: 15.0)
                         .padding(.trailing, 30.0)
-                    }
+                }
                 .frame(height: 50.0)
-                .padding()
-                List(reducer.cellReducers) {
+                ForEach(reducer.cellReducers) {
                     UserCellView(reducer: $0)
                         .frame(height: 100)
                         .cornerRadius(8.0)
                 }
             }
             .navigationBarTitle(Text("Users"))
-//            .onAppear { setupTableViewAppearance() }
-//            .onDisappear { discardTableViewAppearance() }
-        }
+        }.edgesIgnoringSafeArea(.top)
     }
 }
 

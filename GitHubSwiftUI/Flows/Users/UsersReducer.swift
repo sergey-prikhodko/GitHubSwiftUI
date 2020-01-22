@@ -13,9 +13,16 @@ final class UsersReducer: ObservableObject {
     
 //    var reducers = AnyPublisher<[UserCellReducer], nil>()
     
+    private var cancellableStore = Set<AnyCancellable>()
+    
     @Published var searchTerm = ""
     @Published var cellReducers: [UserCellReducer] = []
     
+    
+    let subject = PassthroughSubject<String, Never>()
+    var publisher: AnyPublisher<String, Never> { return $searchTerm.eraseToAnyPublisher() }
+    
+    var subscriber: AnyCancellable = Just("").sink { _ in }
     var numberOfRows: AnyPublisher<Int, Never> {
         return cellReducers.publisher.receive(on: DispatchQueue.main).count().eraseToAnyPublisher()
     }
@@ -25,16 +32,16 @@ final class UsersReducer: ObservableObject {
 //    }
     
     init() {
-        go()
-        
+        subscriber = publisher.throttle(for: 1, scheduler: DispatchQueue.main, latest: false).sink { [weak self] in
+            self?.search($0)
+        }
 //        searchTerm.publisher.
     }
     
-    func go() {
-        GitHubAPIFacade().getUsers(query: "sergey") { [weak self] response in
-            guard let users = response.value else { return }
+    func search(_ term: String) {
+        GitHubAPIFacade().getUsers(query: term) { [weak self] response in
             
-            self?.cellReducers = users.map { UserCellReducer($0) }
+            self?.cellReducers = (response.value ?? []).map { UserCellReducer($0) }
         }
     }
 }
